@@ -1,0 +1,35 @@
+namespace AdventOfCode2025.Day%TWO_DAY_DISPLAY%;
+
+public class Solution : SolutionBase
+{
+  public override int Day => %DAY_NUMBER%;
+
+  public Solution(bool exampleMode) : base(exampleMode)
+  {
+  }
+
+  protected override void PerformPartOne()
+  {
+    throw new NotImplementedException();
+  }
+
+  protected override void PerformPartTwo()
+  {
+    throw new NotImplementedException();
+  }
+
+  private List<string> GetInput()
+  {
+    return ReadFileLines(ExampleMode ? "example.txt" : "input.txt");
+  }
+
+  private List<List<string>> GetInput()
+  {
+    return ReadFileLineGroups(ExampleMode ? "example.txt" : "input.txt");
+  }
+
+  private string GetInput()
+  {
+    return ReadFileContent(ExampleMode ? "example.txt" : "input.txt");
+  }
+}

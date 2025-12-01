@@ -1,0 +1,35 @@
+﻿using AdventOfCode2025;
+
+var arguments = Environment.GetCommandLineArgs();
+var dayNumber = int.Parse(arguments[1]);
+
+var twoDigitDay = dayNumber.ToString("00");
+
+var exampleMode = arguments.Length > 2 ? bool.Parse(arguments[2]) : false;
+
+var typeName = $"AdventOfCode2025.Day{twoDigitDay}.Solution";
+
+var assemby = System.Reflection.Assembly.GetExecutingAssembly();
+if (assemby == null)
+{
+  Console.Error.WriteLine("Failed to get the assembly");
+  return;
+}
+else
+{
+  var solutionType = assemby.GetType(typeName);
+  if (solutionType == null)
+  {
+    Console.Error.WriteLine("Failed to find the solution type");
+    return;
+  }
+
+  dynamic? solution = Activator.CreateInstance(solutionType, args: exampleMode) as SolutionBase;
+  if (solution == null)
+  {
+    Console.Error.WriteLine("Failed to instantiate solution");
+    return;
+  }
+
+  solution.Run();
+}
